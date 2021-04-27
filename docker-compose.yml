@@ -16,7 +16,7 @@ services:
     #hostname: ipsec-vpn-server
     container_name: ikev2-server
     volumes:
-      - ikev2-vpn-data:/etc/ipsec.d
+      - ./ikev2-vpn-data:/etc/ipsec.d
     networks:
       vpn-net2:
         ipv4_address: 172.25.1.3
