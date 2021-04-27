@@ -5,6 +5,8 @@ services:
   vpn:
     image: hwdsl2/ipsec-vpn-server
     restart: always
+    cap_add:
+       - NET_ADMIN
     env_file:
       - ./vpn.env
     ports:
@@ -13,13 +15,6 @@ services:
     privileged: true
     hostname: ipsec-vpn-server
     container_name: ipsec-vpn-server
-version: '3'
-# https://github.com/kylemanna/docker-openvpn/blob/master/docs/docker-compose.md
-
-services:
-     networks:
-       vpn-net:
-         ipv4_address: 172.110.1.3
 
    pihole:
      image: pihole/pihole
