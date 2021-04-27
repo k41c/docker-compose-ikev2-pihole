@@ -14,14 +14,14 @@ services:
       - "4500:4500/udp"
     privileged: true
     #hostname: ipsec-vpn-server
-    container_name: ipsec-vpn-server
+    container_name: ikev2-server
     networks:
       vpn-net2:
         ipv4_address: 172.25.1.4 
 
   pihole:
     image: pihole/pihole
-    container_name: vpn_pihole
+    container_name: ikev2_pihole
     cap_add:
     - NET_ADMIN     
     dns:
