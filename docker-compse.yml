@@ -19,34 +19,34 @@ services:
       vpn-net:
         ipv4_address: 172.110.1.4 
 
-   pihole:
-     image: pihole/pihole
-     container_name: vpn_pihole
-     cap_add:
-       - NET_ADMIN     
-     dns:
-       - 127.0.0.1
-       - 1.1.1.1
-     depends_on:
-       - vpn
-     ports:
-       #- "553:53/tcp"
-       #- "553:53/udp"
-       - "8081:80/tcp"
-     environment:
-       WEBPASSWORD: fcvFjLIO2hWhkFCi
+  pihole:
+    image: pihole/pihole
+    container_name: vpn_pihole
+    cap_add:
+    - NET_ADMIN     
+    dns:
+    - 127.0.0.1
+    - 1.1.1.1
+    depends_on:
+    - vpn
+    ports:
+    #- "553:53/tcp"
+    #- "553:53/udp"
+    - "8081:80/tcp"
+    environment:
+      WEBPASSWORD: fcvFjLIO2hWhkFCi
 # #1 Digitalcourage | #2 Chaos Computer Club
-       DNS1: 46.182.19.48
-       DNS2: 213.73.91.35
-     volumes:
-       - ./pihole:/etc/pihole
-       - ./pihole/dnsmasq.d:/etc/dnsmasq.d
-       - /etc/localtime:/etc/localtime:ro
-       - /etc/timezone:/etc/timezone:ro
-     restart: always
-     networks:
-       vpn-net:
-         ipv4_address: 172.110.1.4     
+      DNS1: 46.182.19.48
+      DNS2: 213.73.91.35
+    volumes:
+    - ./pihole:/etc/pihole
+    - ./pihole/dnsmasq.d:/etc/dnsmasq.d
+    - /etc/localtime:/etc/localtime:ro
+    - /etc/timezone:/etc/timezone:ro
+    restart: always
+    networks:
+      vpn-net:
+        ipv4_address: 172.110.1.4     
 
 # docker network create --driver=bridge --subnet=172.110.1.0/24 --gateway=172.110.1.1 vpn-net
 networks:
