@@ -15,7 +15,7 @@ services:
     privileged: true
     #hostname: ipsec-vpn-server
     container_name: ikev2-server
-    volume:
+    volumes:
       - ikev2-vpn-data:/etc/ipsec.d
     networks:
       vpn-net2:
