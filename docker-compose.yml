@@ -17,7 +17,7 @@ services:
     container_name: ipsec-vpn-server
     networks:
       vpn-net:
-        ipv4_address: 172.110.1.4 
+        ipv4_address: 172.25.1.4 
 
   pihole:
     image: pihole/pihole
@@ -46,7 +46,7 @@ services:
     restart: always
     networks:
       vpn-net:
-        ipv4_address: 172.110.1.4     
+        ipv4_address: 172.25.1.4     
 
 # docker network create --driver=bridge --subnet=172.110.1.0/24 --gateway=172.110.1.1 vpn-net
 networks:
