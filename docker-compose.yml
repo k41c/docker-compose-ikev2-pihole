@@ -16,7 +16,7 @@ services:
     #hostname: ipsec-vpn-server
     container_name: ipsec-vpn-server
     networks:
-      vpn-net:
+      vpn-net2:
         ipv4_address: 172.25.1.4 
 
   pihole:
@@ -45,10 +45,16 @@ services:
     - /etc/timezone:/etc/timezone:ro
     restart: always
     networks:
-      vpn-net:
+      vpn-net2:
         ipv4_address: 172.25.1.4     
 
 # docker network create --driver=bridge --subnet=172.110.1.0/24 --gateway=172.110.1.1 vpn-net
 networks:
-  vpn-net:
-    external: true
+  vpn-net2:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.25.1.0/24
+          gateway: 172.25.1.1
+#    external: true
