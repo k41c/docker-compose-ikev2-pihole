@@ -13,7 +13,7 @@ services:
       - "500:500/udp"
       - "4500:4500/udp"
     privileged: true
-    hostname: ipsec-vpn-server
+    #hostname: ipsec-vpn-server
     container_name: ipsec-vpn-server
 
    pihole:
@@ -25,7 +25,7 @@ services:
        - 127.0.0.1
        - 1.1.1.1
      depends_on:
-       - openvpn
+       - vpn
      ports:
        #- "553:53/tcp"
        #- "553:53/udp"
